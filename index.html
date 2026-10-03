@@ -53,9 +53,6 @@ button.off{background:transparent;color:var(--acc)}
     <button id="snd" class="off">&#128263; Turn sound on</button>
     <div class="vol"><span>&#128265; Volume</span><input type="range" id="vol" min="0" max="100" value="50"><span id="volp">50%</span></div>
   </div>
-  <div class="note">Doomsday-clock tick-tock every second &middot; bell chime every hour</div>
-</div>
-
 <script>
 var TARGET = new Date("2027-01-22T00:00:00+05:30").getTime(); // change here to adjust date/time
 var ctx = null, master = null, volVal = 0.5, soundOn = false, lastSec = null, lastHour = null;
