@@ -28,6 +28,7 @@ h1{font-family:"Segoe Print","Bradley Hand","Chalkboard SE","Comic Sans MS",curs
 .sep{font-family:"Courier New",monospace;font-size:clamp(38px,11vw,100px);font-weight:700;line-height:1;color:var(--acc);opacity:.6}
 .lab{margin-top:8px;font-size:clamp(9px,2vw,13px);letter-spacing:.3em;text-transform:uppercase;color:var(--dim);font-weight:700}
 .sub{margin-top:14px;color:var(--fg);font-size:clamp(13px,2.8vw,16px)}
+  .quote{margin:10px auto 0;max-width:min(640px,92vw);font-family:"Segoe Print","Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;font-size:clamp(13px,2.6vw,17px);color:var(--acc);line-height:1.4}
 .ctl{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap}
 button{background:var(--acc);color:#2a1c2e;border:2px solid var(--acc);border-radius:999px;padding:10px 22px;font-size:15px;font-weight:700;cursor:pointer}
 button.off{background:transparent;color:var(--acc)}
@@ -47,6 +48,7 @@ button.off{background:transparent;color:var(--acc)}
     <div class="unit"><div class="num" id="s">00</div><div class="lab">Seconds</div></div>
   </div>
   <div class="sub" id="sub"></div>
+  <div class="quote" id="quote"></div>
   <div class="ctl">
     <button id="snd" class="off">&#128263; Turn sound on</button>
     <div class="vol"><span>&#128265; Volume</span><input type="range" id="vol" min="0" max="100" value="50"><span id="volp">50%</span></div>
@@ -166,6 +168,53 @@ function update(){
 }
 update();
 setInterval(update, 250);
+(function(){
+  var Q = [
+    "Today's practice is tomorrow's confidence.",
+    "One solved doubt is worth ten re-read pages.",
+    "Consistency beats intensity. Show up again today.",
+    "Every mistake you fix now is a mark saved in January.",
+    "You don't need a perfect day, just a productive one.",
+    "Revise what you know. Practise what you don't.",
+    "Slow progress is still progress. Keep going.",
+    "Your future rank is built by today's hours.",
+    "Focus on the next question, not the whole syllabus.",
+    "Tired is temporary. The result lasts.",
+    "Make today's session a little better than yesterday's.",
+    "Hard chapters become easy after enough attempts.",
+    "Protect your sleep. A rested brain solves faster.",
+    "Switch off the noise. Switch on the timer.",
+    "Understand it once, and you won't have to memorise it twice.",
+    "Every PYQ you solve is one less surprise in the exam hall.",
+    "Stay calm, stay steady, stay in the game.",
+    "Doubts are a sign you're learning, so ask them.",
+    "Be proud of your effort, even on slow days.",
+    "Discipline now, freedom later.",
+    "Compete with your own yesterday.",
+    "Mock tests are rehearsals. Treat them like the real thing.",
+    "Analyse every mock: the lesson is in the mistakes.",
+    "Break the big goal into today's small task.",
+    "Believe in your preparation, then trust it.",
+    "Physics, Chemistry, Maths: one topic at a time.",
+    "A short break is fine. Quitting is not the plan.",
+    "The exam rewards steady preparation, not last-night panic.",
+    "Write the formula, solve the problem, repeat.",
+    "You've already come this far. Keep walking.",
+    "Keep the goal in sight and the phone out of reach.",
+    "Work quietly now. Let the result speak later.",
+    "Each chapter finished is a step closer to the exam hall.",
+    "Do the hard topic first, while your mind is fresh.",
+    "Eat well, drink water, stay healthy, then study hard.",
+    "Today is another chance to get a little better."
+  ];
+  var el = document.getElementById("quote"), last = -1;
+  function show(){
+    var day = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+    var i = day % Q.length;
+    if(i !== last){ last = i; el.textContent = "\u201C" + Q[i] + "\u201D"; }
+  }
+  show(); setInterval(show, 60000);
+})();
 </script>
 </body>
 </html>
